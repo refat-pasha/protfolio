@@ -1542,6 +1542,12 @@ body.menu-open {
   position: relative;
   overflow: hidden;
 }
+.project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Ensures image fills card, cropping if needed */
+  display: block;
+}
 
 .project-image::before {
   content: '';
@@ -3002,27 +3008,31 @@ footer {
     <div class="projects-grid animate__animated animate__fadeInUp animate__delay-3s">
       <!-- Featured Project -->
       <div class="project-card featured-project" data-category="ai">
-        <div class="project-image">🧠</div>
+        <div class="project-image">
+  <img src="acne_detection.png" alt="Project Image">
+</div>
+
+
         <div class="project-content">
           <div class="project-status completed">Featured</div>
-          <h3 class="project-title">AI-Powered Medical Diagnosis System</h3>
+          <h3 class="project-title">AI-Powered Acne-Detection System</h3>
           <p class="project-description">
             A comprehensive machine learning platform that assists healthcare professionals in medical diagnosis using deep learning models. Features include image analysis, symptom prediction, and treatment recommendations with 95% accuracy.
           </p>
           <div class="project-tech">
             <span class="tech-tag">Python</span>
             <span class="tech-tag">TensorFlow</span>
-            <span class="tech-tag">React</span>
-            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Streamlit</span>
+            <span class="tech-tag">Keras</span>
             <span class="tech-tag">MongoDB</span>
-            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Models</span>
           </div>
           <div class="project-links">
-            <a href="https://your-demo-link.com" class="project-link primary" target="_blank" rel="noopener noreferrer">
+            <a href="https://acnedetectionlite.streamlit.app/" class="project-link primary" target="_blank" rel="noopener noreferrer">
               <span>🚀</span>
               <span>Live Demo</span>
             </a>
-            <a href="https://github.com/refat-pasha/medical-diagnosis" class="project-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/refat-pasha/acne-detect-AI-ML" class="project-link" target="_blank" rel="noopener noreferrer">
               <span>💻</span>
               <span>Source Code</span>
             </a>
@@ -3036,7 +3046,7 @@ footer {
 
       <!-- Regular Projects -->
       <div class="project-card" data-category="web">
-        <div class="project-image">IMS</div>
+        <img src="IMS.png" alt="Project Image" class="project-image" style="width: 100%; height: auto; border-radius: 8px;">
         <div class="project-content">
           <div class="project-status completed">Completed</div>
           <h3 class="project-title">Inventory Management System</h3>
