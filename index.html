@@ -29,7 +29,15 @@
 
 *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
 html{ scroll-behavior:smooth; scroll-padding-top:80px; -webkit-text-size-adjust:100%; }
-body{ background:var(--bg); color:var(--text); font-family:var(--body); font-size:16px; line-height:1.62; overflow-x:hidden; }
+body{
+  background:var(--bg); color:var(--text);
+  font-family:var(--body); font-size:16px; line-height:1.62;
+  overflow-x:hidden;
+}
+/* nothing may push the page sideways on any device */
+img,svg,video,table{ max-width:100%; }
+img,svg{ height:auto; }
+h1,h2,h3,p,li,dd,dt,span,b{ overflow-wrap:break-word; }
 ::selection{ background:var(--amber); color:#000; }
 a{ color:inherit; text-decoration:none; }
 .wrap{ max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gut); }
@@ -261,26 +269,7 @@ a{ color:inherit; text-decoration:none; }
 .sec__hd h2{ font-family:var(--disp); font-size:clamp(2rem,4.6vw,3.4rem); line-height:.9; letter-spacing:.01em; }
 .sec__hd .lbl{ margin-left:auto; text-align:right; max-width:44ch; line-height:1.7; }
 
-/* stats */
-.stats{
-  display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
-  border:1px solid var(--line); border-right:0; border-bottom:0;
-}
-.stat{
-  border-right:1px solid var(--line); border-bottom:1px solid var(--line);
-  padding:clamp(18px,2.4vw,28px) clamp(14px,1.8vw,22px);
-  transition:background .22s;
-}
-.stat:hover{ background:var(--panel); }
-.stat b{
-  display:block; font-family:var(--disp);
-  font-size:clamp(2.4rem,5vw,3.6rem); line-height:.86;
-  color:var(--amber); margin-bottom:4px;
-}
-.stat span{
-  font-family:var(--mono); font-size:.55rem; letter-spacing:.15em;
-  text-transform:uppercase; color:var(--dim); line-height:1.5; display:block;
-}
+/* NOTE: the old .stats/.stat rules were replaced by .band__c — see below. */
 
 /* about */
 .about{ display:grid; grid-template-columns:minmax(0,1.45fr) minmax(0,1fr); gap:clamp(28px,4vw,64px); }
@@ -303,6 +292,57 @@ a{ color:inherit; text-decoration:none; }
 .dl__row dd{ font-size:.9rem; }
 .dl__row dd a{ color:var(--amber); border-bottom:1px solid transparent; transition:border-color .2s; }
 .dl__row dd a:hover{ border-bottom-color:var(--amber); }
+
+/* principles */
+.prins{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(272px,1fr));
+  gap:1px; background:var(--line); border:1px solid var(--line);
+  margin-top:clamp(30px,4vw,52px);
+}
+.principle{ background:var(--bg); padding:clamp(20px,2.6vw,30px); transition:background .22s; }
+.principle:hover{ background:var(--panel); }
+.principle__n{
+  font-family:var(--mono); font-size:.58rem; font-weight:700;
+  letter-spacing:.16em; color:var(--amber); margin-bottom:11px;
+}
+.principle h3{
+  font-family:var(--disp); font-size:clamp(1.3rem,2.3vw,1.75rem);
+  line-height:1; margin-bottom:9px;
+}
+.principle p{ font-size:.86rem; color:var(--dim); margin:0; }
+.principle p b{ color:var(--text); font-weight:600; }
+.principle p code{
+  font-family:var(--mono); font-size:.88em; color:var(--amber);
+}
+
+/* numbers band */
+.band{ border-block:1px solid var(--line); background:var(--panel); }
+.band__in{
+  max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gut);
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+}
+.band__c{
+  padding:clamp(22px,3vw,34px) clamp(14px,1.8vw,24px);
+  border-right:1px solid var(--line);
+  transition:background .22s;
+}
+/* drop the trailing rule on every visual row, however it wraps */
+.band__c:nth-last-child(-n+3){ border-right:0; }
+@media (max-width:520px){
+  .band__c:nth-last-child(-n+3){ border-right:1px solid var(--line); }
+  .band__c:nth-child(3n){ border-right:0; }
+  .band__c:last-child{ border-right:0; }
+}
+.band__c:hover{ background:var(--bg); }
+.band__c b{
+  display:block; font-family:var(--disp);
+  font-size:clamp(2.4rem,5vw,3.5rem); line-height:.86;
+  color:var(--amber); margin-bottom:5px;
+}
+.band__c span{
+  font-family:var(--mono); font-size:.55rem; letter-spacing:.15em;
+  text-transform:uppercase; color:var(--dim); line-height:1.5; display:block;
+}
 
 /* work */
 .work{ border-top:1px solid var(--line); }
@@ -478,15 +518,24 @@ form{ display:grid; gap:14px; }
 /* ═══════════════════════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════════════════════ */
-@media (max-width:1080px){
-  .hero{ grid-template-columns:1fr; }
-  .card{ max-width:420px; }
-  .about,.contact{ grid-template-columns:1fr; }
-  .wi{ grid-template-columns:44px minmax(0,1fr); gap:12px 18px; }
-  .wi__go{ grid-column:2; flex-direction:row; flex-wrap:wrap; }
+/* ── LARGE DESKTOP ── */
+@media (max-width:1180px){
+  .wi{ grid-template-columns:48px minmax(0,1fr) auto; gap:14px 22px; }
+  .wi__list{ grid-column:2; }
+  .wi__go{ grid-column:3; grid-row:1 / span 2; }
 }
 
-@media (max-width:820px){
+/* ── TABLET LANDSCAPE / SMALL LAPTOP ── */
+@media (max-width:1024px){
+  .hero{ grid-template-columns:1fr; }
+  .card{ max-width:400px; }
+  .about,.contact{ grid-template-columns:1fr; }
+  .prins{ grid-template-columns:repeat(2,1fr); }
+  .sec__hd .lbl{ max-width:52ch; }
+}
+
+/* ── TABLET PORTRAIT ── */
+@media (max-width:900px){
   .nav__links{
     position:fixed; top:60px; left:0; right:0; flex-direction:column;
     background:var(--bg); border-bottom:1px solid var(--line);
@@ -499,6 +548,31 @@ form{ display:grid; gap:14px; }
   .sec__hd{ flex-direction:column; align-items:flex-start; gap:8px; }
   .sec__hd .lbl{ margin-left:0; text-align:left; }
   .f2{ grid-template-columns:1fr; }
+  .wi{ grid-template-columns:40px minmax(0,1fr); gap:12px 18px; }
+  .wi__list{ grid-column:2; }
+  .wi__go{ grid-column:2; grid-row:auto; flex-direction:row; flex-wrap:wrap; }
+  .tl__r{ grid-template-columns:130px minmax(0,1fr); gap:16px; }
+}
+
+@media (max-width:760px){
+  .prins{ grid-template-columns:1fr; }
+  .stack{ grid-template-columns:repeat(2,1fr); }
+  .foot__top{ flex-direction:column; gap:18px; }
+}
+
+/* stack + principles cells share a hairline grid, so each
+   trailing edge must drop its border on every wrapped row */
+@media (max-width:760px){
+  .stack__c:nth-last-child(-n+2){ border-right:0; }
+  .stack__c:nth-last-child(2n){ border-right:1px solid var(--line); }
+  .stack__c:nth-child(2n){ border-right:0; }
+  .stack__c:last-child{ border-right:0; }
+}
+
+@media (max-width:640px){
+  /* long mono tech strings must not force a horizontal scrollbar */
+  .marquee__run span{ padding-inline:18px; gap:18px; }
+  .wi__t{ font-size:clamp(1.5rem,7vw,2rem); }
 }
 
 @media (max-width:520px){
@@ -507,9 +581,34 @@ form{ display:grid; gap:14px; }
   .wi{ grid-template-columns:1fr; }
   .wi__n{ padding-top:0; }
   .wi__go{ grid-column:1; }
+  .wi__go .go{ flex:1 1 auto; }
   .tl__r{ grid-template-columns:1fr; gap:5px; }
   .dl__row{ grid-template-columns:1fr; gap:2px; }
-  .stats{ grid-template-columns:1fr 1fr; }
+  .band__in{ grid-template-columns:1fr 1fr; }
+  .card__row{ grid-template-columns:1fr; gap:2px; }
+  .prins{ grid-template-columns:1fr; }
+  .mailrow{ padding:13px 14px; font-size:.7rem; }
+  .sec__hd h2{ font-size:clamp(1.8rem,11vw,2.6rem); }
+  .foot__top{ flex-direction:column; }
+}
+
+@media (max-width:380px){
+  .nav__mark{ font-size:1.15rem; }
+  .hero h1{ font-size:clamp(2.4rem,13vw,3.2rem); }
+  .hero__cta{ flex-direction:column; align-items:stretch; }
+  .hero__cta .btn{ justify-content:center; }
+  .card__shot img{ aspect-ratio:1/1.25; }
+  .contact h3{ font-size:clamp(1.7rem,12vw,2.4rem); }
+  .btn,.submit{ padding:13px 18px; }
+}
+
+/* very short landscape phones — trim vertical padding so the
+   hero still fits without scrolling */
+@media (max-height:520px) and (orientation:landscape){
+  .hero{ padding-top:84px; padding-bottom:40px; }
+  .hero h1{ font-size:clamp(2.2rem,8vw,3.4rem); }
+  .card__shot img{ aspect-ratio:auto; height:170px; }
+  .sec{ padding:44px 0; }
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -524,7 +623,7 @@ form{ display:grid; gap:14px; }
 @media print{
   body{ background:#fff; color:#000; }
   .nav,.marquee,.card{ display:none !important; }
-  .wi,.stat,.stack__c{ break-inside:avoid; }
+  .wi,.band__c,.principle,.stack__c{ break-inside:avoid; }
 }
 </style>
 </head>
@@ -579,8 +678,8 @@ form{ display:grid; gap:14px; }
       <a href="#work" class="btn btn--p">The work
         <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
-      <a href="Refat_Pasha_cv_resume4.pdf" class="btn" download>Résumé
-        <svg viewBox="0 0 24 24"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+      <a href="Refat_Pasha_cv_resume4.pdf" class="btn" target="_blank" rel="noopener noreferrer">Résumé
+        <svg viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-8.5 8.5M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>
       </a>
     </div>
   </div>
@@ -617,53 +716,79 @@ form{ display:grid; gap:14px; }
   </div>
 </div>
 
+<!-- ═════════ NUMBERS BAND ═════════ -->
+<div class="band">
+  <div class="band__in">
+    <div class="band__c"><b>4</b><span>Projects shipped</span></div>
+    <div class="band__c"><b>6</b><span>Stacks shipped in</span></div>
+    <div class="band__c"><b>2026</b><span>Graduated, CSE</span></div>
+  </div>
+</div>
+
 <!-- ═════════ ABOUT ═════════ -->
 <section class="sec" id="about">
   <div class="wrap">
     <div class="sec__hd rv">
       <h2>ABOUT</h2>
-      <span class="lbl">Graduate, 2026 — backend architecture, contention, security boundaries</span>
-    </div>
-
-    <div class="stats rv" style="margin-bottom:clamp(30px,4.4vw,58px)">
-      <div class="stat"><b>389</b><span>Tests passing</span></div>
-      <div class="stat"><b>58.6%</b><span>Coverage · floor 50%</span></div>
-      <div class="stat"><b>43</b><span>Tables</span></div>
-      <div class="stat"><b>17</b><span>Modules</span></div>
-      <div class="stat"><b>7</b><span>Roles · 14 policies</span></div>
+      <span class="lbl">Who I am and how I work — project specifics live under The Work</span>
     </div>
 
     <div class="about">
       <div class="rv">
         <p>
-          I build production <b>ASP.NET Core</b> backends with Angular front ends. The flagship is
-          <b>CampusConnect</b> — a university ERP spanning seventeen modules and seven roles across a
-          forty-three table schema, held up by a three hundred eighty-nine test suite.
+          I am a Computer Science graduate who builds backend systems that stay correct when
+          real traffic hits them. Most of my work is <b>ASP.NET Core</b> and <b>SQL Server</b>,
+          usually with an Angular front end on top. I care less about which framework is trending
+          and more about whether the thing still works at ten times the load you tested at.
         </p>
         <p>
-          The second project exists because I wanted to see what happens when fifty thousand buyers
-          hit one endpoint inside the same second. Double-booking is prevented with SQL Server
-          <code>rowversion</code> tokens rather than an in-memory lock, because an in-memory lock stops
-          working the moment you run two API instances. Three sweeper workers reclaim seats from
-          abandoned baskets so inventory never silently leaks.
+          I am drawn to the part of a system nobody demos. What happens when two requests race?
+          What happens when a client walks away mid-checkout? What happens to this table after ten
+          thousand rows? Those questions are where the real design decisions live, and most of my
+          projects started because I wanted to actually answer one of them rather than assume.
         </p>
         <p>
-          Before .NET I spent three years on a learning platform that went through four backends —
-          static HTML, Flask, PHP, then Flutter and Firebase. A long way of learning that the hard
-          problems are rarely about the framework.
+          I write documentation that explains <em>why</em>, not just <em>what</em> — including the
+          parts that are still broken. I would rather hand over something honest and understandable
+          than something impressive and opaque. Right now I am looking for a backend or full-stack
+          .NET role where the team holds a similar bar.
         </p>
       </div>
 
       <dl class="dl rv">
-        <div class="dl__row"><dt>Focus</dt><dd>Backend architecture · concurrency · security</dd></div>
-        <div class="dl__row"><dt>Stack</dt><dd>C# / .NET 10 · EF Core · Angular · SQL Server</dd></div>
+        <div class="dl__row"><dt>Based in</dt><dd>Dhaka, Bangladesh</dd></div>
+        <div class="dl__row"><dt>Speciality</dt><dd>Backend architecture · concurrency · data integrity</dd></div>
+        <div class="dl__row"><dt>Daily stack</dt><dd>C# / .NET 10 · EF Core · Angular · SQL Server</dd></div>
         <div class="dl__row"><dt>Degree</dt><dd>B.Sc. CSE, Daffodil International University, 2026</dd></div>
         <div class="dl__row"><dt>Grade</dt><dd>CGPA 3.93 / 4.00</dd></div>
+        <div class="dl__row"><dt>Languages</dt><dd>English (fluent) · Bengali (native)</dd></div>
         <div class="dl__row"><dt>Email</dt><dd><a href="mailto:refatpasha567@gmail.com">refatpasha567@gmail.com</a></dd></div>
-        <div class="dl__row"><dt>Phone</dt><dd><a href="tel:+8801911827231">+880 1911827231</a></dd></div>
         <div class="dl__row"><dt>GitHub</dt><dd><a href="https://github.com/refat-pasha" target="_blank" rel="noopener noreferrer">github.com/refat-pasha</a></dd></div>
-        <div class="dl__row"><dt>Status</dt><dd>Open to .NET &amp; full-stack roles</dd></div>
       </dl>
+    </div>
+
+    <!-- ── how I work ── -->
+    <div class="prins rv">
+      <div class="principle">
+        <div class="principle__n">01</div>
+        <h3>TEST WHERE THE BUG LIVES</h3>
+        <p>A unit test proves the logic. Two <code>DbContext</code>s prove the concurrency. A real browser proves the wiring. I pick the level that would actually catch the failure rather than the level that is easiest to write.</p>
+      </div>
+      <div class="principle">
+        <div class="principle__n">02</div>
+        <h3>CORRECTNESS BEATS CLEVERNESS</h3>
+        <p>An in-process lock is fast and quietly wrong the moment you run two instances. A <code>rowversion</code> token is marginally slower and always right. I will take the slower answer for anything that has to survive scaling.</p>
+      </div>
+      <div class="principle">
+        <div class="principle__n">03</div>
+        <h3>BOUNDARIES ARE THE FEATURE</h3>
+        <p>Uploads that cannot execute script, ownership resolved from claims instead of URLs, payments reversed rather than deleted. Security is a set of defaults, not a layer bolted on at the end.</p>
+      </div>
+      <div class="principle">
+        <div class="principle__n">04</div>
+        <h3>DOCUMENT WHAT BREAKS</h3>
+        <p>Every repository I ship lists its known gaps in the README instead of omitting them. A reviewer should never have to discover a limitation by reading the code, and nothing should quietly fail in production.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -852,7 +977,7 @@ form{ display:grid; gap:14px; }
           <a class="lk" href="https://github.com/refat-pasha" target="_blank" rel="noopener noreferrer"><b>GitHub</b><span>refat-pasha ↗</span></a>
           <a class="lk" href="https://github.com/refat-pasha/CampusConnect" target="_blank" rel="noopener noreferrer"><b>CampusConnect</b><span>389 tests ↗</span></a>
           <a class="lk" href="https://github.com/refat-pasha/flashSaleMovieTicket" target="_blank" rel="noopener noreferrer"><b>Flash Sale Engine</b><span>concurrency ↗</span></a>
-          <a class="lk" href="Refat_Pasha_cv_resume4.pdf" download><b>Résumé</b><span>PDF ↓</span></a>
+          <a class="lk" href="Refat_Pasha_cv_resume4.pdf" target="_blank" rel="noopener noreferrer"><b>Résumé</b><span>PDF ↗</span></a>
         </div>
       </div>
 
