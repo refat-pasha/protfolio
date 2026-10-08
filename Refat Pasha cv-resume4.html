@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Refat Pasha — Software Engineer (.NET / Full-Stack) · One Page</title>
+<style>
+  @page { size: A4; margin: 9mm 11mm; }
+
+  :root {
+    --ink: #16191d;
+    --muted: #5b6570;
+    --accent: #0b5fff;
+    --accent-soft: #eef3ff;
+    --line: #dde3ea;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 9.1pt;
+    line-height: 1.36;
+    color: var(--ink);
+    background: #eceff3;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    padding: 9mm 11mm;
+    background: #fff;
+    box-shadow: 0 2px 22px rgba(0,0,0,.13);
+    overflow: hidden;
+  }
+
+  header {
+    border-bottom: 2.2px solid var(--accent);
+    padding-bottom: 6px;
+    margin-bottom: 9px;
+  }
+
+  .name-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 12px;
+  }
+
+  h1 {
+    font-size: 20pt;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+
+  .tagline {
+    font-size: 9.6pt;
+    font-weight: 650;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+
+  .contact {
+    margin-top: 5px;
+    font-size: 8.1pt;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 11px;
+  }
+
+  .contact a { color: var(--muted); text-decoration: none; }
+
+  section { margin-bottom: 8px; break-inside: avoid; }
+
+  h2 {
+    font-size: 8.9pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 2px;
+    margin-bottom: 5px;
+  }
+
+  .summary {
+    background: var(--accent-soft);
+    border-left: 2.5px solid var(--accent);
+    padding: 7px 10px;
+    border-radius: 0 4px 4px 0;
+    font-size: 8.7pt;
+  }
+
+  .summary strong { color: var(--accent); }
+
+  .entry { margin-bottom: 7px; break-inside: avoid; }
+
+  .entry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .entry-title { font-size: 9.5pt; font-weight: 700; }
+
+  .badge {
+    display: inline-block;
+    font-size: 6.8pt;
+    font-weight: 700;
+    color: #fff;
+    background: var(--accent);
+    border-radius: 2.5px;
+    padding: 1px 4.5px;
+    margin-left: 5px;
+    vertical-align: 1.5px;
+    letter-spacing: .3px;
+  }
+
+  .entry-meta {
+    font-size: 7.9pt;
+    color: var(--muted);
+    margin: 0 0 3px;
+  }
+
+  .right { font-size: 7.9pt; color: var(--muted); white-space: nowrap; }
+
+  ul { list-style: none; margin-top: 1px; }
+
+  ul li {
+    position: relative;
+    padding-left: 11px;
+    margin-bottom: 1.6px;
+    font-size: 8.6pt;
+  }
+
+  ul li::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 5.6px;
+    width: 3.4px;
+    height: 3.4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  ul li strong { font-weight: 650; }
+
+  code {
+    font-family: "SF Mono", Consolas, monospace;
+    font-size: 8pt;
+    background: #f2f4f7;
+    padding: 0 2.5px;
+    border-radius: 2.5px;
+  }
+
+  /* Skills — inline, compact */
+  .skills { font-size: 8.5pt; }
+  .skills div { margin-bottom: 1.5px; }
+  .skills b { color: var(--accent); font-weight: 650; }
+  .skills span { color: var(--muted); }
+
+  /* Education inline */
+  .edu {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    font-size: 8.9pt;
+  }
+
+  footer {
+    border-top: 1px solid var(--line);
+    margin-top: 8px;
+    padding-top: 4px;
+    font-size: 7.6pt;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { background: #fff; }
+    .page { box-shadow: none; width: auto; height: auto; padding: 0; box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="name-row">
+      <h1>Refat Pasha</h1>
+      <div class="tagline">Software Engineer · .NET / Full-Stack</div>
+    </div>
+    <div class="contact">
+      <span>+880 1911827231</span>
+      <span>refatpasha567@gmail.com</span>
+      <a href="https://refat-pasha.github.io">refat-pasha.github.io</a>
+      <a href="https://github.com/refat-pasha">github.com/refat-pasha</a>
+      <span>Dhaka, Bangladesh</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="summary">
+      Computer Science &amp; Engineering graduate (CGPA <strong>3.93/4.00</strong>) building production-grade
+      <strong>ASP.NET Core</strong> systems with <strong>Angular</strong> front ends. Shipped a 43-table university ERP with
+      <strong>389 passing tests</strong> at <strong>58.6% coverage</strong> across 17 modules and 7 roles. Strongest in clean
+      architecture, concurrency-safe data handling, and security-conscious design.
+    </div>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div><b>Backend</b> <span>— C#, ASP.NET Core (MVC / Web API / SignalR), .NET 10, EF Core, LINQ</span></div>
+      <div><b>Frontend</b> <span>— Angular 22, TypeScript, Tailwind CSS, Razor, Bootstrap</span></div>
+      <div><b>Database</b> <span>— SQL Server, SQLite, EF Migrations, query optimization</span></div>
+      <div><b>Architecture</b> <span>— Clean Architecture, SOLID</span></div>
+      <div><b>Auth &amp; Security</b> <span>— ASP.NET Identity, JWT, policy authorization</span></div>
+      <div><b>Testing &amp; DevOps</b> <span>— xUnit, integration tests, Git, Docker, Swagger</span></div>
+      <div><b>Also</b> <span>— Flutter, Dart, Firebase, GetX, Python, Flask, PHP</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">CampusConnect — University ERP &amp; Student Portal <span class="badge">FLAGSHIP</span></div>
+      </div>
+      <div class="entry-meta">
+        ASP.NET Core MVC · Web API · EF Core · SQL Server · SignalR · xUnit &nbsp;|&nbsp;
+        <a href="https://github.com/refat-pasha/CampusConnect">github.com/refat-pasha/CampusConnect</a> 
+      </div>
+      <ul>
+        <li>Production ERP: <strong>17 modules</strong>, <strong>43 tables</strong>, <strong>7 roles</strong> with 14 authorization policies.</li>
+        <li>Rule engines (registration, grading, fees, scheduling, exams) written as <strong>pure static classes</strong> — unit-testable with no database or clock.</li>
+        <li>REST API with a unified response envelope, meaningful status codes, and capped pagination.</li>
+        <li>Hardened uploads against <strong>stored XSS</strong>, path traversal, and extension spoofing via magic-number validation.</li>
+        <li>Dockerized with Compose; soft deletes, audit interceptors, live SignalR notifications.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">Flash Sale Movie Ticket Engine</div>
+      <div class="entry-meta">
+        ASP.NET Core 10 · Angular 22 · SignalR · SQL Server · xUnit &nbsp;|&nbsp;
+        <a href="https://github.com/refat-pasha/flashSaleMovieTicket">github.com/refat-pasha/flashSaleMovieTicket</a>
+      </div>
+      <ul>
+        <li>Cinema ticketing built for <strong>contention at scale</strong> — thousands of buyers racing for the same seats.</li>
+        <li>Killed double-booking with SQL <code>rowversion</code> optimistic concurrency → clean <strong>409</strong>s instead of silent overwrites.</li>
+        <li>Virtual waiting room: FIFO queue + <code>BackgroundService</code> admitting batches every 10s over SignalR.</li>
+        <li>Queue fairness enforced by a <strong>server-validated JWT claim</strong>, not just a client-side guard.</li>
+        <li>Multi-seat basket holds in one transaction with partial-success handling; three sweeper workers reclaim abandoned inventory.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-title">TodoMaster — Task Management Web App</div>
+      <div class="entry-meta">
+        ASP.NET Core MVC · EF Core 10 · SQLite · Razor &nbsp;|&nbsp;
+        <a href="https://github.com/refat-pasha/TodoMaster">github.com/refat-pasha/TodoMaster</a>
+      </div>
+      <ul>
+        <li>Full CRUD app with priority, due dates, server-side validation, and anti-forgery tokens on all POST actions.</li>
+        <li>Structured Controllers → Services → DbContext → SQLite with async EF Core; documented path to Web API + Angular.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Software Engineering Projects — <span style="font-weight:400;color:var(--muted);font-size:8.6pt">Full-Stack .NET Developer</span></div>
+        <div class="right">2026 – Present</div>
+      </div>
+      <ul>
+        <li>Built <strong>3 production-grade .NET applications</strong> end to end — architecture, schema, API, security, tests, deployment.</li>
+        <li>Applied TDD and clean architecture throughout; authored architecture, security-checklist, and roadmap documentation.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">11th Lesson — Learning Management System <span style="font-weight:400;color:var(--muted);font-size:8.6pt">Team Developer</span></div>
+        <div class="right">2023 – 2026</div>
+      </div>
+      <div class="entry-meta" style="font-size:7.7pt">
+        Flutter · Firebase (Auth/Firestore/Storage) · GetX · Flask · SQLAlchemy · PHP · MySQL &nbsp;|&nbsp;
+        <a href="https://github.com/refat-pasha/eeleventh_lssion_app_final">github.com/refat-pasha/eeleventh_lssion_app_final</a>
+      </div>
+      <ul>
+        <li>Built a <strong>3-year team project</strong> from a static HTML site through Flask, PHP, and MySQL backends into a cross-platform <strong>Flutter LMS</strong>; owned the backend, database, mobile app, and UI/UX.</li>
+        <li>Shipped Firebase Auth with student/teacher roles, quiz engine, assignment submission, study groups, offline library, and XP/streak gamification using GetX for state, routing, and DI.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-head">
+        <div class="entry-title">Machine Learning Research — <span style="font-weight:400;color:var(--muted);font-size:8.6pt">Student Researcher</span></div>
+        <div class="right">2024 – Present</div>
+      </div>
+      <ul>
+        <li>Built and evaluated classification/regression/clustering models in Python, scikit-learn, and TensorFlow; EDA and feature engineering on healthcare data.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu">
+      <div>
+        <b style="font-size:9.4pt">B.Sc. Computer Science &amp; Engineering</b>
+        <span style="color:var(--muted)"> — Daffodil International University</span>
+      </div>
+      <div class="right">CGPA 3.93 / 4.00 · 2026</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Certifications: 365 Data Science (Data Scientist Track, ML in Python, TensorFlow 2, Pandas) · DataCamp (Python, SQL — Intro &amp; Intermediate)</span>
+    <span>Bengali native · English fluent</span>
+  </footer>
+
+</div>
+</body>
+</html>
